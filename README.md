@@ -1,0 +1,2 @@
+# timewaster
+Burn some CPU
