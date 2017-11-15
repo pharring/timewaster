@@ -98,3 +98,20 @@ Abramowitz/Stegun:
         ********************************************************************************************************
 Total time: 9439 ms
 ```
+
+## Docker support
+Build a docker (for Windows) image with:
+```
+cd src
+docker build -t timewaster .
+```
+
+Run it with:
+```
+docker run --rm timewaster
+```
+
+You can specify the iterations arguments too. e.g.:
+```
+docker run --rm timewaster 10000
+```
