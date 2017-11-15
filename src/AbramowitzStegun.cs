@@ -2,7 +2,7 @@
 
 namespace Timewaster
 {
-    internal class GaussianRandom : IGaussianRandom
+    internal class AbramowitzStegun : IGaussianRandom
     {
         private readonly Random _rnd = new Random();
 

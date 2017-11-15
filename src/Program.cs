@@ -32,7 +32,7 @@ namespace Timewaster
             p.Print();
 
             Console.WriteLine("Abramowitz/Stegun:");
-            p.Run<GaussianRandom>(iterations);
+            p.Run<AbramowitzStegun>(iterations);
             p.Print();
 
             Console.WriteLine($"Total time: {sw.ElapsedMilliseconds} ms");
