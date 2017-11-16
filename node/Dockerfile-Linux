@@ -1,0 +1,9 @@
+# timewaster (Linux, node.js)
+
+FROM node:8.9.1
+
+WORKDIR /app
+
+COPY . .
+
+ENTRYPOINT [ "node", "timewaster.js" ]
