@@ -98,3 +98,25 @@ Abramowitz/Stegun:
         ********************************************************************************************************
 Total time: 9439 ms
 ```
+
+## Docker support
+Build a Docker image with:
+```
+cd src
+docker build -t timewaster .
+```
+
+If you are running Windows 10 or Windows Server 2016 Fall Creators Update (1709), then you can also build a corresponding Nanoserver container by specifying an additional build argument:
+```
+docker build --build-arg NANOSERVER=-nanoserver-1709 -t timewaster:nanoserver-1709 .
+```
+
+Run it with:
+```
+docker run --rm timewaster
+```
+
+You can specify the iterations arguments too. e.g.:
+```
+docker run --rm timewaster 10000
+```
