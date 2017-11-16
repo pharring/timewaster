@@ -43,4 +43,4 @@ WORKDIR /app
 
 COPY . .
 
-CMD [ "node.exe", "timewaster.js" ]
+ENTRYPOINT [ "node.exe", "timewaster.js" ]
