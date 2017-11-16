@@ -73,7 +73,7 @@ function Print() {
     }
 }
 
-var iterations = 5000000;
+var iterations = 10000000;
 
 if (process.argv.length > 2) {
     iterations = parseInt(process.argv[2]);
