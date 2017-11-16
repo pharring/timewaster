@@ -34,14 +34,15 @@ namespace Timewaster
         /// to 1-p and negate the result.
         /// </remarks>
         private static double CumulativeGaussian(double p) => 
-            p <= 0.5 ? Approximation(p) : -Approximation(1 - p);
+            p < 0.5 ? Approximation(1 - p) : -Approximation(p);
 
         /// <summary>
         /// This is an approximation by Abramowitz and Stegun.
         /// See 26.2.23 at http://people.math.sfu.ca/~cbm/aands/page_933.htm
         /// </summary>
         /// <param name="p">
-        /// Input probability (rectangular). Must be between 0 and 0.5.
+        /// Input probability (rectangular). Must be greater than 0 (to avoid
+        /// infinity in the calculation) and less than or equal to 0.5
         /// </param>
         /// <returns>
         /// A rational approximation for x where Q(x)=p and Q is the
