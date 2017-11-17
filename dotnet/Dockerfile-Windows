@@ -1,0 +1,26 @@
+# timewaster (Windows, .NET Core)
+#
+# Version 1709 (Fall Creators Update) is the default windows container.
+# To use a different version of Windows container, specify --build-arg on the docker
+# build command line. 
+# e.g. For Windows Nanoserver 2016 Semi Annual Channel
+#   docker build --build-arg WIDOWSTAG=sac2016 -t timewaster:sac2016 .
+#
+
+ARG WINDOWSTAG=1709
+FROM microsoft/dotnet:2.0.3-sdk-nanoserver-${WINDOWSTAG} AS build-env
+WORKDIR /app
+
+# copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
+
+# copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
+
+# build runtime image
+FROM microsoft/dotnet:2.0.3-runtime-nanoserver-${WINDOWSTAG}
+WORKDIR /app
+COPY --from=build-env /app/out ./
+ENTRYPOINT [ "dotnet", "Timewaster.dll" ]
