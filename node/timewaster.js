@@ -66,7 +66,7 @@ function Print() {
         var threshold = scale * (rows - i);
         var line = "";
         for (var j = 0; j < _values.length; j++) {
-            line += (_values[j] >= threshold ? '*' : ' ');
+            line += (_values[j] >= threshold ? '\u25a0' : '\u00a0');
         }
 
         console.log(line);

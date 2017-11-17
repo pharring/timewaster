@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 
 namespace Timewaster
 {
@@ -59,19 +60,24 @@ namespace Timewaster
 
         private void Print()
         {
+            const char bar = '\u25a0'; // Black Square
+            const char space = '\u00A0'; // Non-breaking space
+
             long max = _values.Max();
             int rows = (int)Math.Min(30, max);
             double scale = (double)max / rows;
 
-            for(int i = 0; i < rows; i++)
+            var sb = new StringBuilder(c_buckets);
+            for (int i = 0; i < rows; i++)
             {
+                sb.Clear();
                 long threshold = (long)(scale * (rows - i));
-                foreach(var x in _values)
+                foreach (var x in _values)
                 {
-                    Console.Write(x >= threshold ? '*' : ' ');
+                    sb.Append(x >= threshold ? bar : space);
                 }
 
-                Console.WriteLine();
+                Console.WriteLine(sb.ToString());
             }
         }
     }
